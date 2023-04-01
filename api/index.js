@@ -71,7 +71,7 @@ db_connect.collection("Data").insertOne(product, function (err) {
   console.log("1 document inserted");
 
 });
-
+res.json(product);
 });
 
 
