@@ -5,8 +5,23 @@ const app = express();
 
 const ObjectId = require("mongodb").ObjectId;
 bodyParser = require('body-parser')
-const cors = require("cors");
+
 const { mongoClient } = require("../conn");
+
+const cors = require("cors");
+
+/////  Security   ///////
+
+const rateLimit = require('express-rate-limit')
+const ipfilter = require('express-ipfilter').IpFilter
+
+
+const corsOptions = {
+  origin: '*',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+}
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
